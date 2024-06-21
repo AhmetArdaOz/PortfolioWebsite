@@ -1,4 +1,6 @@
+import { useRef } from "react";
 import "./portfolio.scss";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 const items = [
   {
@@ -21,38 +23,90 @@ const items = [
   },
   {
     id: 4,
-    title: "",
-    img: "",
-    desc: "",
+    title: "Koz Games",
+    img: "/Koz_Games.png",
+    desc: "Koz Games is a gaming website where users can purchase games, apply filters to games, and list the games they have purchased. For this project, Firebase was used for the backend to handle database management and user authentication, ensuring a secure and scalable infrastructure. React was used for the frontend, designing a user-friendly interface and integrating various UI components and libraries to enable game filtering and listing features. The result was a secure and user-friendly gaming website.",
   },
   {
     id: 5,
-    title: "",
-    img: "",
-    desc: "",
+    title: " Voice Warping",
+    img: "https://www.hibedestek.com.tr/wp-content/uploads/2015/04/i%C5%9Fkur.png",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque facilisis facilisis varius. Quisque mi nisi, lobortis ut dolor quis, congue ornare justo. Sed feugiat aliquam mi facilisis ullamcorper. In vitae egestas nisi. Duis ac varius nunc. In hac habitasse platea dictumst. Phasellus consectetur auctor sem.",
   },
   {
     id: 6,
-    title: "",
-    img: "",
-    desc: "",
+    title: "Ascendary",
+    img: "https://www.hibedestek.com.tr/wp-content/uploads/2015/04/i%C5%9Fkur.png",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque facilisis facilisis varius. Quisque mi nisi, lobortis ut dolor quis, congue ornare justo. Sed feugiat aliquam mi facilisis ullamcorper. In vitae egestas nisi. Duis ac varius nunc. In hac habitasse platea dictumst. Phasellus consectetur auctor sem.",
   },
   {
     id: 7,
-    title: "",
-    img: "",
-    desc: "",
+    title: "House Tour Website Project",
+    img: "https://www.hibedestek.com.tr/wp-content/uploads/2015/04/i%C5%9Fkur.png",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque facilisis facilisis varius. Quisque mi nisi, lobortis ut dolor quis, congue ornare justo. Sed feugiat aliquam mi facilisis ullamcorper. In vitae egestas nisi. Duis ac varius nunc. In hac habitasse platea dictumst. Phasellus consectetur auctor sem.",
   },
   {
     id: 8,
-    title: "",
-    img: "",
-    desc: "",
+    title: "Notes App",
+    img: "https://www.hibedestek.com.tr/wp-content/uploads/2015/04/i%C5%9Fkur.png",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque facilisis facilisis varius. Quisque mi nisi, lobortis ut dolor quis, congue ornare justo. Sed feugiat aliquam mi facilisis ullamcorper. In vitae egestas nisi. Duis ac varius nunc. In hac habitasse platea dictumst. Phasellus consectetur auctor sem.",
+  },
+  {
+    id: 9,
+    title: "Travel Decision Support System",
+    img: "https://www.hibedestek.com.tr/wp-content/uploads/2015/04/i%C5%9Fkur.png",
+    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque facilisis facilisis varius. Quisque mi nisi, lobortis ut dolor quis, congue ornare justo. Sed feugiat aliquam mi facilisis ullamcorper. In vitae egestas nisi. Duis ac varius nunc. In hac habitasse platea dictumst. Phasellus consectetur auctor sem.",
   },
 ];
 
+const Single = ({ item }) => {
+  const ref = useRef();
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    //offset: ["start start ", "end start"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [-300, 300]);
+  return (
+    <section>
+      <div className="container">
+        <div className="wrapper">
+          <div className="imageContainer" ref={ref}>
+            <img src={item.img} alt="" />
+          </div>
+          <motion.div className="textContainer" style={{ y }}>
+            <h2>{item.title}</h2>
+            <p>{item.desc}</p>
+            <button>See in Github</button>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const Portfolio = () => {
-  return <div className="portfolio">portfolio</div>;
+  const ref = useRef();
+
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["end end ", "start start"],
+  });
+
+  const scaleX = useSpring(scrollYProgress, { stiffness: 100, damping: 30 });
+
+  return (
+    <div className="portfolio" ref={ref}>
+      <div className="progress">
+        <h1>Featured Works</h1>
+        <motion.div style={{ scaleX }} className="progressBar"></motion.div>
+      </div>
+      {items.map((item) => (
+        <Single item={item} key={item.id} />
+      ))}
+    </div>
+  );
 };
 
 export default Portfolio;
