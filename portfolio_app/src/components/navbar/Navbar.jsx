@@ -16,11 +16,11 @@ const Navbar = () => {
           Ahmet Arda öz
         </motion.span>
         <div className="social">
-          <a href="#">
-            <img src="/facebook.png" alt="" />
+          <a href="https://github.com/AhmetArdaOz">
+            <img src="/github.png" alt="" />
           </a>
-          <a href="#">
-            <img src="/instagram.png" alt="" />
+          <a href="https://www.linkedin.com/in/ahmet-arda-öz-38952b224">
+            <img src="/linkedin.png" alt="" />
           </a>
         </div>
       </div>
