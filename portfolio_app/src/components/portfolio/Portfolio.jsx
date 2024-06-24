@@ -29,7 +29,7 @@ const items = [
     title: "PureFx",
     img: "/voice_warping.jpg",
     desc: "PureFx provides users with a comprehensive suite of features for manipulating and analyzing audio files. Users can save and upload voice recordings, alter them using various advanced tools, and save the modified audio. A key feature is the spectrum graph, which offers a detailed visualization of the audio's frequency content, aiding in understanding and analyzing changes. This project empowers users to experiment with their voice recordings, making it a valuable resource for voice manipulation and audio analysis through its extensive toolset and visualization options.",
-    linkUrl: "https://github.com/galaxyutku/Voice-Warping",
+    linkUrl: "https://github.com/galaxyutku/Voice-Warping ",
   },
   {
     id: 5,
