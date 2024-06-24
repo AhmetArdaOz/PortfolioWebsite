@@ -65,11 +65,13 @@
     position: absolute;
     top: 0;
     right: 0;
+    margin-right: 250px;
     @include mobile {
       height: 50%;
       width: 100%;
       top: unset;
       bottom: 0;
+      margin-right: 0;
     }
 
     img {

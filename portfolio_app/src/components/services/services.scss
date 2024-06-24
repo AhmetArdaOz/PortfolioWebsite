@@ -106,12 +106,13 @@
         }
       }
 
-      button {
+      a {
         padding: 10px;
         background-color: orange;
         border: none;
         cursor: pointer;
         margin-top: 10px;
+        color: black;
 
         @include mobile {
           background-color: transparent;
