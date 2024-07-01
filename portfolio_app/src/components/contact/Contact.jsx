@@ -60,10 +60,7 @@ const Contact = () => {
         </motion.div>
         <motion.div className="item" variants={variants}>
           <h2>Address</h2>
-          <span>
-            Çiğiltepe Neighborhood, 1566th Street, Çiğiltepe Military Housing,
-            İldeniz Apartment, No:10
-          </span>
+          <span>Ankara/Mamak</span>
         </motion.div>
         <motion.div className="item" variants={variants}>
           <h2>Phone</h2>
